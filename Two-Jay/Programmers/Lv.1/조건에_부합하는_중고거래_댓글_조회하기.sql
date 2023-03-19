@@ -22,7 +22,7 @@ Table USED_GOODS_REPLY {
   BOARD_ID  varchar(5) [ref:> USED_GOODS_BOARD.BOARD_ID ]
   WRITER_ID varchar(50)
   CONTENTS  varchar(1000) [null]
-  CREATED_DATE DATE
+  CREATED_DATE DATE 
 }
 */
 
