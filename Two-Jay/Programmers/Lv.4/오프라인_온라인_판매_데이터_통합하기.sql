@@ -55,3 +55,21 @@ UNION은 두 개 이상의 SELECT 문의 결과 집합을 결합하는 SQL 문�
 /*
 서브쿼리를 이용하면 중복된 로직을 제거할 수 있다.
 */
+SELECT * FROM (
+    SELECT DATE_FORMAT(on_sale.SALES_DATE, '%Y-%m-%d') AS SALES_DATE,
+        on_sale.PRODUCT_ID,
+        on_sale.USER_ID,
+        on_sale.SALES_AMOUNT
+    FROM ONLINE_SALE AS on_sale
+    UNION ALL
+    SELECT DATE_FORMAT(off_sale.SALES_DATE, '%Y-%m-%d') AS SALES_DATE,
+        off_sale.PRODUCT_ID,
+        NULL as USER_ID,
+        off_sale.SALES_AMOUNT
+    FROM OFFLINE_SALE AS off_sale
+) AS sale
+WHERE YEAR(SALES_DATE) = 2022 AND MONTH(SALES_DATE) = 3
+ORDER BY SALES_DATE ASC, PRODUCT_ID ASC, USER_ID ASC
+
+
+
