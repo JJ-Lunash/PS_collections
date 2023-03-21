@@ -35,8 +35,6 @@ WHERE boards.VIEWS = (
 )
 ORDER BY files.FILE_ID DESC
 
-
-
 /*
 CONCAT()은 문자열을 합치는 함수이다.
 
